@@ -40,22 +40,20 @@ public class ThreadedIterationThroughStream {
         }
 
         System.out.println("Test Start");
-        System.out.println("-----------");
+        System.out.println("----------");
         long startExternalIteration = System.currentTimeMillis();
         externalIteration(bigListOfStrings);
         long endExternalIteration = System.currentTimeMillis();
-        System.out.println("Time taken for externalIteration(bigListOfStrings) is :" +
-                (endExternalIteration - startExternalIteration) + " , and the result found: "+ found);
+        System.out.println("Time taken for EXTERNAL-TRADITIONAL-ITERATION-Iteration(bigListOfStrings) is :" +
+                (endExternalIteration - startExternalIteration) + " , and the result found: " + found);
 
         long startInternalIteration = System.currentTimeMillis();
         internalIteration(bigListOfStrings);
         long endInternalIteration = System.currentTimeMillis();
-        System.out.println("Time taken for internalIteration(bigListOfStrings) is :" +
-                (endInternalIteration - startInternalIteration) + " , and the result found: "+ found);
+        System.out.println("Time taken for INTERNAL-PARALLEL-STREAMing-Iteration(bigListOfStrings) is :" +
+                (endInternalIteration - startInternalIteration) + " , and the result found: " + found);
 
-
-
-
+        System.out.println("\n==============================");
 
         // TEST_2
         smallListOfNumbers = new ArrayList<Integer>();
@@ -66,15 +64,12 @@ public class ThreadedIterationThroughStream {
         long startExternalIteration1 = System.currentTimeMillis();
         externalIterationOnSleep(smallListOfNumbers);
         long endExternalIteration1 = System.currentTimeMillis();
-        System.out.println("Time taken for externalIterationOnSleep(smallListOfNumbers) is :" + (endExternalIteration1 - startExternalIteration1));
+        System.out.println("Time taken for EXTERNAL-TRADITIONAL-ITERATION-IterationOnSleep(smallListOfNumbers) is :" + (endExternalIteration1 - startExternalIteration1));
 
         long startInternalIteration1 = System.currentTimeMillis();
         internalIterationOnSleep(smallListOfNumbers);
         long endInternalIteration1 = System.currentTimeMillis();
-        System.out.println("Time taken for internalIterationOnSleep(smallListOfNumbers) is :" + (endInternalIteration1 - startInternalIteration1));
-
-
-
+        System.out.println("Time taken for INTERNAL-PARALLEL-STREAMing-IterationOnSleep(smallListOfNumbers) is :" + (endInternalIteration1 - startInternalIteration1));
 
         // TEST_3
         Thread t1 = new Thread(ThreadedIterationThroughStream:: internalIterationOnThread);
@@ -90,11 +85,10 @@ public class ThreadedIterationThroughStream {
         Thread.sleep(30000);
     }
 
-
     private static boolean externalIteration(List<String> bigListOfStrings) {
         found = false;
-        for(String s : bigListOfStrings) {
-            if(s.equals("Counter no: 1000000")) {
+        for (String s : bigListOfStrings) {
+            if (s.equals("Counter no: 1000000")) {
                 found = true;
             }
         }
@@ -114,10 +108,9 @@ public class ThreadedIterationThroughStream {
         return found;
     }
 
-
     private static boolean externalIterationOnSleep(List<Integer> smallListOfNumbers) {
         found = false;
-        for(Integer s : smallListOfNumbers) {
+        for (Integer s : smallListOfNumbers) {
             try {
                 Thread.sleep(100);
             } catch (Exception e) {
