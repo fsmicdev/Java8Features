@@ -20,7 +20,7 @@ import static java.util.stream.Collectors.*;
 public class SortAndListOldestFilesSkippingN {
 
     public SortAndListOldestFilesSkippingN(List<File> files, int numOfNewestToLeave) {
-        System.out.println("\n=============== SORTing and Skipping top " + numOfNewestToLeave + " files ===============\n");
+        System.out.println("\n=============== SORTing and Skipping Top " + numOfNewestToLeave + " files ===============\n");
 
         files.stream()
                 .sorted(comparing(File::lastModified).reversed())
